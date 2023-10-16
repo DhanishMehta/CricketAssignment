@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cricket Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container vh-100 vw-100 d-flex align-items-center p-3 flex-column">
+        <h2 id="main-heading" class="fs-2">Cricket Game</h2>
+        <div id="utility-panel" class="d-flex justfiy-content-around align-items-center h-25 p-5">
+            <div class="team-score-utility d-flex flex-column p-3 m-5 align-items-center">
+                <h3 class="fs-4 text-center">Team 1 score</h3>
+                <div id="team-1-score" class="fs-3">0</div>
+                <button onclick="Team1Hit()" id="team-1-hit" class="btn bg-primary text-bg-dark">
+                    HIT
+                </button>
+            </div>
+            <div class="timer-utility d-flex flex-column align-items-center">
+                <h4 class="fs-4">TIMER</h4>
+                <div id="countdown" class="fw-bold fs-3">60</div>
+                <button onclick="startCountDown()" id="start-btn" class="btn bg-primary text-bg-dark">
+                    START
+                </button>
+            </div>
+            <div class="team-score-utility d-flex flex-column p-3 m-5 align-items-center">
+                <h4 class="fs-4 text-center">Team 2 score</h4>
+                <div id="team-2-score" class="fs-3">0</div>
+                <button onclick="Team2Hit()" id="tea m-2-hit" class="btn bg-primary text-bg-dark">
+                    HIT
+                </button>
+            </div>
+        </div>
+        <container class="container d-flex justify-content-center align-items-center w-100 h-auto m-5">
+            <div id="team-1-scoreboard" class="scoreboard d-flex flex-column p-3">
+                <row id="t1-header" class="d-flex">
+                    <cell class="name">TEAM 1</cell>
+                    <cell class="runs">B1</cell>
+                    <cell class="runs">B2</cell>
+                    <cell class="runs">B3</cell>
+                    <cell class="runs">B4</cell>
+                    <cell class="runs">B5</cell>
+                    <cell class="runs">B6</cell>
+                    <cell class="score">TOTAL</cell>
+                </row>
+                <row id="t1p1" class="d-flex">
+                    <cell id="t1p1name" class="name">PLAYER 1</cell>
+                    <cell id="t1p1b1" class="runs"></cell>
+                    <cell id="t1p1b2" class="runs"></cell>
+                    <cell id="t1p1b3" class="runs"></cell>
+                    <cell id="t1p1b4" class="runs"></cell>
+                    <cell id="t1p1b5" class="runs"></cell>
+                    <cell id="t1p1b6" class="runs"></cell>
+                    <cell id="t1p1-total" class="score"></cell>
+                </row>
+                <row id="t1p2" class="d-flex">
+                    <cell id="t1p2name" class="name">PLAYER 2</cell>
+                    <cell id="t1p2b1" class="runs"></cell>
+                    <cell id="t1p2b2" class="runs"></cell>
+                    <cell id="t1p2b3" class="runs"></cell>
+                    <cell id="t1p2b4" class="runs"></cell>
+                    <cell id="t1p2b5" class="runs"></cell>
+                    <cell id="t1p2b6" class="runs"></cell>
+                    <cell id="t1p2-total" class="score"></cell>
+                </row>
+                <row id="t1p3" class="d-flex">
+                    <cell id="t1p3name" class="name">PLAYER 3</cell>
+                    <cell id="t1p3b1" class="runs"></cell>
+                    <cell id="t1p3b2" class="runs"></cell>
+                    <cell id="t1p3b3" class="runs"></cell>
+                    <cell id="t1p3b4" class="runs"></cell>
+                    <cell id="t1p3b5" class="runs"></cell>
+                    <cell id="t1p3b6" class="runs"></cell>
+                    <cell id="t1p3-total" class="score"></cell>
+                </row>
+                <row id="t1p4" class="d-flex">
+                    <cell id="t1p4name" class="name">PLAYER 4</cell>
+                    <cell id="t1p4b1" class="runs"></cell>
+                    <cell id="t1p4b2" class="runs"></cell>
+                    <cell id="t1p4b3" class="runs"></cell>
+                    <cell id="t1p4b4" class="runs"></cell>
+                    <cell id="t1p4b5" class="runs"></cell>
+                    <cell id="t1p4b6" class="runs"></cell>
+                    <cell id="t1p4-total" class="score"></cell>
+                </row>
+                <row id="t1p5" class="d-flex">
+                    <cell id="t1p5name" class="name">PLAYER 5</cell>
+                    <cell id="t1p5b1" class="runs"></cell>
+                    <cell id="t1p5b2" class="runs"></cell>
+                    <cell id="t1p5b3" class="runs"></cell>
+                    <cell id="t1p5b4" class="runs"></cell>
+                    <cell id="t1p5b5" class="runs"></cell>
+                    <cell id="t1p5b6" class="runs"></cell>
+                    <cell id="t1p5-total" class="score"></cell>
+                </row>
+                <row id="t1p6" class="d-flex">
+                    <cell id="t1p6name" class="name">PLAYER 6</cell>
+                    <cell id="t1p6b1" class="runs"></cell>
+                    <cell id="t1p6b2" class="runs"></cell>
+                    <cell id="t1p6b3" class="runs"></cell>
+                    <cell id="t1p6b4" class="runs"></cell>
+                    <cell id="t1p6b5" class="runs"></cell>
+                    <cell id="t1p6b6" class="runs"></cell>
+                    <cell id="t1p6-total" class="score"></cell>
+                </row>
+                <row id="t1p7" class="d-flex">
+                    <cell id="t1p7name" class="name">PLAYER 7</cell>
+                    <cell id="t1p7b1" class="runs"></cell>
+                    <cell id="t1p7b2" class="runs"></cell>
+                    <cell id="t1p7b3" class="runs"></cell>
+                    <cell id="t1p7b4" class="runs"></cell>
+                    <cell id="t1p7b5" class="runs"></cell>
+                    <cell id="t1p7b6" class="runs"></cell>
+                    <cell id="t1p7-total" class="score"></cell>
+                </row>
+                <row id="t1p8" class="d-flex">
+                    <cell id="t1p8name" class="name">PLAYER 8</cell>
+                    <cell id="t1p8b1" class="runs"></cell>
+                    <cell id="t1p8b2" class="runs"></cell>
+                    <cell id="t1p8b3" class="runs"></cell>
+                    <cell id="t1p8b4" class="runs"></cell>
+                    <cell id="t1p8b5" class="runs"></cell>
+                    <cell id="t1p8b6" class="runs"></cell>
+                    <cell id="t1p8-total" class="score"></cell>
+                </row>
+                <row id="t1p9" class="d-flex">
+                    <cell id="t1p9name" class="name">PLAYER 9</cell>
+                    <cell id="t1p9b1" class="runs"></cell>
+                    <cell id="t1p9b2" class="runs"></cell>
+                    <cell id="t1p9b3" class="runs"></cell>
+                    <cell id="t1p9b4" class="runs"></cell>
+                    <cell id="t1p9b5" class="runs"></cell>
+                    <cell id="t1p9b6" class="runs"></cell>
+                    <cell id="t1p9-total" class="score"></cell>
+                </row>
+                <row id="t1p10" class="d-flex">
+                    <cell id="t1p10name" class="name">PLAYER 10</cell>
+                    <cell id="t1p10b1" class="runs"></cell>
+                    <cell id="t1p10b2" class="runs"></cell>
+                    <cell id="t1p10b3" class="runs"></cell>
+                    <cell id="t1p10b4" class="runs"></cell>
+                    <cell id="t1p10b5" class="runs"></cell>
+                    <cell id="t1p10b6" class="runs"></cell>
+                    <cell id="t1p10-total" class="score"></cell>
+                </row>
+            </div>
+            <div id="results-utility-container" class="d-flex flex-column m-3 p-3">
+                <button onclick="generateResult()" id="gen-res-btn" class="btn bg-primary text-bg-dark">
+                    GENERATE RESULT
+                </button>
+                <p id="alert"></p>
+                <div id="match-winner-box" class="d-none d-flex flex-column align-items-center m-2 p-2">
+                    <div id="match-winner-desc">MATCH WON BY</div>
+                    <div id="match-winner" class="fw-bold">DHANISH MEHTA</div>
+                </div>
+                <div id="mom-box" class="d-none d-flex flex-column align-items-center m-2 p-2">
+                    <div id="mom-desc">MAN OF THE MATCH</div>
+                    <div id="mom" class="fw-bold">DHANISH MEHTA</div>
+                </div>
+            </div>
+            <div id="team-2-scoreboard" class="scoreboard d-flex flex-column p-3">
+                <row id="t2-header" class="d-flex">
+                    <cell class="name">TEAM 2</cell>
+                    <cell class="runs">B1</cell>
+                    <cell class="runs">B2</cell>
+                    <cell class="runs">B3</cell>
+                    <cell class="runs">B4</cell>
+                    <cell class="runs">B5</cell>
+                    <cell class="runs">B6</cell>
+                    <cell class="score">TOTAL</cell>
+                </row>
+                <row id="t2p1" class="d-flex">
+                    <cell id="t2p1name" class="name">PLAYER 1</cell>
+                    <cell id="t2p1b1" class="runs"></cell>
+                    <cell id="t2p1b2" class="runs"></cell>
+                    <cell id="t2p1b3" class="runs"></cell>
+                    <cell id="t2p1b4" class="runs"></cell>
+                    <cell id="t2p1b5" class="runs"></cell>
+                    <cell id="t2p1b6" class="runs"></cell>
+                    <cell id="t2p1-total" class="score"></cell>
+                </row>
+                <row id="t2p2" class="d-flex">
+                    <cell id="t2p2name" class="name">PLAYER 2</cell>
+                    <cell id="t2p2b1" class="runs"></cell>
+                    <cell id="t2p2b2" class="runs"></cell>
+                    <cell id="t2p2b3" class="runs"></cell>
+                    <cell id="t2p2b4" class="runs"></cell>
+                    <cell id="t2p2b5" class="runs"></cell>
+                    <cell id="t2p2b6" class="runs"></cell>
+                    <cell id="t2p2-total" class="score"></cell>
+                </row>
+                <row id="t2p3" class="d-flex">
+                    <cell id="t2p3name" class="name">PLAYER 3</cell>
+                    <cell id="t2p3b1" class="runs"></cell>
+                    <cell id="t2p3b2" class="runs"></cell>
+                    <cell id="t2p3b3" class="runs"></cell>
+                    <cell id="t2p3b4" class="runs"></cell>
+                    <cell id="t2p3b5" class="runs"></cell>
+                    <cell id="t2p3b6" class="runs"></cell>
+                    <cell id="t2p3-total" class="score"></cell>
+                </row>
+                <row id="t2p4" class="d-flex">
+                    <cell id="t2p4name" class="name">PLAYER 4</cell>
+                    <cell id="t2p4b1" class="runs"></cell>
+                    <cell id="t2p4b2" class="runs"></cell>
+                    <cell id="t2p4b3" class="runs"></cell>
+                    <cell id="t2p4b4" class="runs"></cell>
+                    <cell id="t2p4b5" class="runs"></cell>
+                    <cell id="t2p4b6" class="runs"></cell>
+                    <cell id="t2p4-total" class="score"></cell>
+                </row>
+                <row id="t2p5" class="d-flex">
+                    <cell id="t2p5name" class="name">PLAYER 5</cell>
+                    <cell id="t2p5b1" class="runs"></cell>
+                    <cell id="t2p5b2" class="runs"></cell>
+                    <cell id="t2p5b3" class="runs"></cell>
+                    <cell id="t2p5b4" class="runs"></cell>
+                    <cell id="t2p5b5" class="runs"></cell>
+                    <cell id="t2p5b6" class="runs"></cell>
+                    <cell id="t2p5-total" class="score"></cell>
+                </row>
+                <row id="t2p6" class="d-flex">
+                    <cell id="t2p6name" class="name">PLAYER 6</cell>
+                    <cell id="t2p6b1" class="runs"></cell>
+                    <cell id="t2p6b2" class="runs"></cell>
+                    <cell id="t2p6b3" class="runs"></cell>
+                    <cell id="t2p6b4" class="runs"></cell>
+                    <cell id="t2p6b5" class="runs"></cell>
+                    <cell id="t2p6b6" class="runs"></cell>
+                    <cell id="t2p6-total" class="score"></cell>
+                </row>
+                <row id="t2p7" class="d-flex">
+                    <cell id="t2p7name" class="name">PLAYER 7</cell>
+                    <cell id="t2p7b1" class="runs"></cell>
+                    <cell id="t2p7b2" class="runs"></cell>
+                    <cell id="t2p7b3" class="runs"></cell>
+                    <cell id="t2p7b4" class="runs"></cell>
+                    <cell id="t2p7b5" class="runs"></cell>
+                    <cell id="t2p7b6" class="runs"></cell>
+                    <cell id="t2p7-total" class="score"></cell>
+                </row>
+                <row id="t2p8" class="d-flex">
+                    <cell id="t2p8name" class="name">PLAYER 8</cell>
+                    <cell id="t2p8b1" class="runs"></cell>
+                    <cell id="t2p8b2" class="runs"></cell>
+                    <cell id="t2p8b3" class="runs"></cell>
+                    <cell id="t2p8b4" class="runs"></cell>
+                    <cell id="t2p8b5" class="runs"></cell>
+                    <cell id="t2p8b6" class="runs"></cell>
+                    <cell id="t2p8-total" class="score"></cell>
+                </row>
+                <row id="t2p9" class="d-flex">
+                    <cell id="t2p9name" class="name">PLAYER 9</cell>
+                    <cell id="t2p9b1" class="runs"></cell>
+                    <cell id="t2p9b2" class="runs"></cell>
+                    <cell id="t2p9b3" class="runs"></cell>
+                    <cell id="t2p9b4" class="runs"></cell>
+                    <cell id="t2p9b5" class="runs"></cell>
+                    <cell id="t2p9b6" class="runs"></cell>
+                    <cell id="t2p9-total" class="score"></cell>
+                </row>
+                <row id="t2p10" class="d-flex">
+                    <cell id="t2p10name" class="name">PLAYER 10</cell>
+                    <cell id="t2p10b1" class="runs"></cell>
+                    <cell id="t2p10b2" class="runs"></cell>
+                    <cell id="t2p10b3" class="runs"></cell>
+                    <cell id="t2p10b4" class="runs"></cell>
+                    <cell id="t2p10b5" class="runs"></cell>
+                    <cell id="t2p10b6" class="runs"></cell>
+                    <cell id="t2p10-total" class="score"></cell>
+                </row>
+            </div>
+        </container>
+    </div>
+    <script src="./script.js"></script>
+    <!-- <script src="./game.js"></script> -->
+</body>
+
+</html>

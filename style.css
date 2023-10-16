@@ -1,0 +1,66 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-size: 16px !important;
+
+}
+
+/* 
+.btn{
+    font-size: ;
+} */
+
+cell{
+    width: 2.5em;
+    height: 1.25em;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25em;
+}
+
+cell.score{
+    width: 3.75em;
+}
+
+cell.name{
+    width: 5.375em;
+}
+
+#team-1-scoreboard, #team-2-scoreboard{
+    border: 1px solid black;
+    height: auto;
+}
+
+@media screen and (max-width: 1080px){
+    *{
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 894px){
+    *{
+        font-size: 12px !important;
+    }
+}
+
+@media screen and (max-width: 770px){
+    *{
+        font-size: 14px !important;
+    }
+    .container{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 320px){
+    *{
+        font-size: 11px !important;
+    }
+    .container{
+        flex-direction: column;
+        align-items: center;
+    }
+}
